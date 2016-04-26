@@ -21,6 +21,7 @@
     "files": [
         "./index.ts",
         "./public/ts/components/app.ts",
+        "./public/ts/components/article-summary.ts",
         "./typings/main.d.ts"
     ],
     "atom": {

@@ -1,20 +1,26 @@
-import { Component, provide, Injectable } from "angular2/core";
-import {bootstrap}    from "angular2/platform/browser";
+import { Component } from "angular2/core";
+import { NgFor } from "angular2/common";
+import { bootstrap } from "angular2/platform/browser";
 import { Http, HTTP_PROVIDERS } from "angular2/http";
 import "rxjs/rx";
+import { ArticleSummary } from "./article-summary";
 
 @Component({
+    directives: [ NgFor, ArticleSummary ],
     providers: [ HTTP_PROVIDERS ],
     selector: "noodle-crate-app",
-    template: `<router-outlet></router-outlet>`
+    template: `<article-summary *ngFor="#noodle of _noodles" [noodle]="noodle"></article-summary>`
 })
-@Injectable()
 class SiteContainer {
+   private _noodles: Array<any>;
+
    public constructor(http: Http) {
       http
          .get("http://localhost:3000/noodles/")
          .map(x => x.json())
-         .subscribe(noodles => console.log(noodles));
+         .subscribe(noodles => {
+            this._noodles = noodles;
+         });
    }
 }
 bootstrap(SiteContainer);
