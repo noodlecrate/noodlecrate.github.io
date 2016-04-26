@@ -1,9 +1,12 @@
 #npm
 node_modules
-node-debug.log
+npm-debug.log
 
 #TypeScript
 typings
 *.js
 *.d.ts
 *.js.map
+
+#Sass
+*.css

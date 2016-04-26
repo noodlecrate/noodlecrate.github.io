@@ -1,0 +1,49 @@
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+    -webkit-box-shadow:$top $left $blur $color #{$inset};
+    -moz-box-shadow:$top $left $blur $color #{$inset};
+    box-shadow:$top $left $blur $color #{$inset};
+}
+
+$menu-item-background: #fcfcfc;
+$title-color: #232323;
+$subtitle-color: #6F6F6F;
+$text-color: $title-color;
+
+article-summary {
+    width: 100%;
+    font-size: 1.2em;
+    background: $menu-item-background;
+    display: block;
+    overflow: hidden;
+    @include box-shadow(0px, 3px, 4px, -1px, rgba(0,0,0,0.5));
+
+    section.image {
+        float: left;
+        width: 32%;
+        height: 100%;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    article {
+        font-family: 'Pathway Gothic One', sans-serif;
+        padding: 0.2em 1em;
+
+        h2 {
+            margin: 0.5em 0 0;
+            color: $title-color;
+        }
+
+        h4 {
+            margin: 0.5em 0;
+            text-transform: uppercase;
+            color: $subtitle-color;
+        }
+
+        p {
+            color: $text-color;
+        }
+    }
+}

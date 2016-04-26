@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "typings install && tsc",
+    "build": "node-sass --include-path scss public/sass/styles.scss public/css/styles.css && typings install && tsc",
     "start": "node index.js"
   },
   "repository": {
@@ -29,6 +29,7 @@
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
+    "node-sass": "^3.6.0",
     "typings": "^0.8.1"
   }
 }
