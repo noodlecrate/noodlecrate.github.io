@@ -2,8 +2,28 @@
 <html>
    <head>
       <title>Noodlecrate</title>
+     <script src="/node_modules/es6-shim/es6-shim.min.js"></script>
+     <script src="/node_modules/systemjs/dist/system-polyfills.js"></script>
+     <script src="/node_modules/systemjs/dist/system.src.js"></script>
+     <script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>
+     <base href="/" >
+     <script>
+     System.config({
+        defaultJSExtensions: true,
+        map: {
+            "feel-ui": "/node_modules/feel-ui",
+            "angular2": "/node_modules/angular2",
+            "rxjs": "/node_modules/rxjs"
+        }
+      });
+      System.import("/ts/components/app.js")
+            .then(null, console.error.bind(console));
+     </script>
+     <script src="/node_modules/rxjs/bundles/Rx.js"></script>
+     <script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
+     <script src="/node_modules/angular2/bundles/router.js"></script>
    </head>
    <body>
-      Noodlecrate
+      <noodle-crate-app></noodle-crate-app>
    </body>
 </html>

@@ -20,6 +20,7 @@
     ],
     "files": [
         "./index.ts",
+        "./public/ts/components/app.ts",
         "./typings/main.d.ts"
     ],
     "atom": {
