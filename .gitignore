@@ -9,4 +9,4 @@ typings
 *.js.map
 
 #Sass
-*.css
+css

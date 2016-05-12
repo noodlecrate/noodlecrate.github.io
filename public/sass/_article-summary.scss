@@ -10,7 +10,8 @@ $subtitle-color: #6F6F6F;
 $text-color: $title-color;
 
 article-summary {
-    width: 100%;
+    margin: 16px;
+    height: 400px;
     font-size: 1.2em;
     background: $menu-item-background;
     display: block;
@@ -19,17 +20,22 @@ article-summary {
 
     section.image {
         float: left;
-        width: 32%;
+        width: 30%;
         height: 100%;
+        overflow: hidden;
+        display: inline-block;
 
         img {
             height: 100%;
+            width: 100%;
         }
     }
 
     article {
-        font-family: 'Pathway Gothic One', sans-serif;
         padding: 0.2em 1em;
+        display: inline-block;
+        width: 64%;
+        vertical-align: top;
 
         h2 {
             margin: 0.5em 0 0;
