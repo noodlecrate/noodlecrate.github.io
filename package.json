@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/noodlecrate/noodlecrate.github.io",
   "dependencies": {
-    "es6-shim": "^0.35.0",
+    "es6-shim": "^0.35.1",
     "express": "^4.13.4",
     "feel-ui": "^0.1.4",
     "reflect-metadata": "^0.1.2",

@@ -15,7 +15,7 @@ import { RouteParams } from "angular2/router";
                </article>`
 })
 export class ViewReviewPage {
-   private review: object = {};
+   private review: Object = {};
 
    public constructor(@Inject(Http) http: Http, @Inject(RouteParams) routeParams: RouteParams) {
       http
