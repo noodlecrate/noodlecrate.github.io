@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node-sass --include-path scss public/sass/styles.scss public/css/styles.css && typings install && tsc",
-    "start": "node index.js"
+    "build": "npm run build-sass && npm run build-typescript",
+    "start": "node index.js",
+    "build-sass": "node-sass --include-path scss public/sass/styles.scss public/css/styles.css",
+    "build-typescript": "typings install && tsc"
   },
   "repository": {
     "type": "git",
