@@ -15,11 +15,13 @@
     ],
     "filesGlob": [
         "./index.ts",
+        "./dev-index.ts",
         "./public/**/*.ts",
         "./typings/main.d.ts"
     ],
     "files": [
         "./index.ts",
+        "./dev-index.ts",
         "./public/ts/components/app.ts",
         "./public/ts/components/article-summary.ts",
         "./public/ts/components/home-page.ts",
