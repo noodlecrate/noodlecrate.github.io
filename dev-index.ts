@@ -1,11 +1,11 @@
-var liveServer = require("live-server");
+let liveServer = require("live-server");
 
-var params = {
+let params = {
     port: 69,
     root: "./public",
     file: "index.html",
     wait: 500,
-    mount: [['/node_modules', './node_modules']],
+    mount: [["/node_modules", "./node_modules"]],
     logLevel: 2
 };
 
