@@ -25,6 +25,7 @@
         "./public/ts/components/app.ts",
         "./public/ts/components/article-summary.ts",
         "./public/ts/components/home-page.ts",
+        "./public/ts/components/login-page.ts",
         "./public/ts/components/not-found-page.ts",
         "./public/ts/components/view-review-page.ts",
         "./typings/main.d.ts"
