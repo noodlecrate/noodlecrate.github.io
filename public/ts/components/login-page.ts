@@ -11,7 +11,7 @@ import "rxjs/rx";
     template: `<form id="login-form">
                   <feel-input [(value)]=username [label]="'Username'"></feel-input>
                   <feel-input type="password" [(value)]=password [label]="'Password'"></feel-input>
-                  <feel-button text="Sign in" primary=true (click)=signIn()></feel-button>
+                  <feel-button text="Sign in" type="submit" primary=true (click)=signIn()></feel-button>
                </form>`
 })
 export class LoginPage {
