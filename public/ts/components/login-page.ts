@@ -19,7 +19,7 @@ export class LoginPage {
    public password: string;
    private _http: Http;
 
-   public constructor(http: Http) {
+   public constructor(@Inject(Http) http: Http) {
      this._http = http;
    }
 
