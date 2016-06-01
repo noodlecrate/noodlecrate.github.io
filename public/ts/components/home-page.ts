@@ -1,7 +1,7 @@
 import { Component, Inject } from "angular2/core";
 import { NgFor } from "angular2/common";
 import { Http, HTTP_PROVIDERS } from "angular2/http";
-import "rxjs/rx";
+import "rxjs/Rx";
 import { ArticleSummary } from "./article-summary";
 
 @Component({
