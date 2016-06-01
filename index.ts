@@ -3,7 +3,7 @@ import * as http from "http";
 
 let app = Express();
 
-app.set("port", process.env.PORT || 69);
+app.set("port", process.env.PORT || 2900);
 app.use(Express.static("public"));
 app.use("/node_modules", Express.static("node_modules"));
 

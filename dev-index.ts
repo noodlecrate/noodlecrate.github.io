@@ -1,7 +1,7 @@
 let liveServer = require("live-server");
 
 let params = {
-    port: 69,
+    port: 2900,
     root: "./public",
     file: "index.html",
     wait: 500,
