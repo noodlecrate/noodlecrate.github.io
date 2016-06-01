@@ -3,7 +3,7 @@ import { APP_BASE_HREF } from "angular2/platform/common";
 import { NgFor } from "angular2/common";
 import { bootstrap } from "angular2/platform/browser";
 import { Http, HTTP_PROVIDERS } from "angular2/http";
-import "rxjs/rx";
+import "rxjs/Rx";
 import { HomePage } from "./home-page";
 import { LoginPage } from "./login-page";
 import { NotFoundPage } from "./not-found-page";

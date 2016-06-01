@@ -2,7 +2,7 @@ import { Component, Inject } from "angular2/core";
 import { NgFor } from "angular2/common";
 import { Http, HTTP_PROVIDERS, Headers } from "angular2/http";
 import { InputComponent, ButtonComponent, NotificationProvider } from "feel-ui/feel-ui"
-import "rxjs/rx";
+import "rxjs/Rx";
 
 @Component({
     directives: [ InputComponent, ButtonComponent ],
