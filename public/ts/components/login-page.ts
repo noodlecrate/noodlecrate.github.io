@@ -26,10 +26,10 @@ export class LoginPage {
    public signIn() {
 
       let request = new XMLHttpRequest();
+      request.open("POST", "http://localhost:3000/session");
+
       request.setRequestHeader('Content-Type', 'application/json');
       request.withCredentials = true;
-
-      request.open("POST", "http://localhost:3000/session");
 
       request.onreadystatechange = function () {
            if(request.readyState === XMLHttpRequest.DONE) {
