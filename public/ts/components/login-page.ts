@@ -24,6 +24,30 @@ export class LoginPage {
    }
 
    public signIn() {
+
+      let request = new XMLHttpRequest();
+      request.setRequestHeader('Content-Type', 'application/json');
+      request.withCredentials = true;
+
+      request.open("POST", "http://localhost:3000/session");
+
+      request.onreadystatechange = function () {
+           if(request.readyState === XMLHttpRequest.DONE) {
+               console.log(request.responseText);
+
+               if (request.status == 200 || request.status == 201) {
+
+                    new NotificationProvider().showSuccess("Hooray", "you got it right");
+               }
+               else {
+                 new NotificationProvider().showError("Boo", "you got it wrong");
+
+               }
+           };
+       };
+
+      request.send(JSON.stringify({ username: this.username, password: this.password }))
+/*
      let headers = new Headers();
      headers.append('Content-Type', 'application/json');
 
@@ -35,6 +59,6 @@ export class LoginPage {
      },
      () => {
        new NotificationProvider().showError("Boo", "you got it wrong");
-     });
+    });*/
    }
 }
