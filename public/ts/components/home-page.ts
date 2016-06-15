@@ -11,14 +11,30 @@ import { ArticleSummary } from "./article-summary";
     template: `<article-summary *ngFor="#review of _reviews" [review]="review"></article-summary>`
 })
 export class HomePage {
-   private _reviews: Array<any>;
+    private _reviews: Array<any>;
 
-   public constructor(@Inject(Http) http: Http) {
+    public constructor(@Inject(Http) http: Http) {
+        let request = new XMLHttpRequest();
+        request.open("GET", "http://localhost:3000/reviews");
+
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.withCredentials = true;
+
+        request.onreadystatechange = function () {
+            if(request.readyState === XMLHttpRequest.DONE && request.status == 200) {
+                this._reviews = JSON.parse(request.responseText);
+            }
+        }
+
+        request.send();
+
+        /*
       http
          .get("http://localhost:3000/reviews")
          .map(x => x.json())
          .subscribe(reviews => {
             this._reviews = reviews;
          });
+         */
    }
 }
