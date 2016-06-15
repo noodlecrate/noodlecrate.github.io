@@ -33,11 +33,15 @@ export class LoginPage {
 
       request.onreadystatechange = function () {
            if(request.readyState === XMLHttpRequest.DONE) {
-               console.log(request.responseText);
-
                if (request.status == 200 || request.status == 201) {
 
-                    new NotificationProvider().showSuccess("Hooray", "you got it right");
+                   let sessiontestRequest = new XMLHttpRequest();
+                   sessiontestRequest.open("GET", "http://localhost:3000/sessiontest");
+                   sessiontestRequest.withCredentials = true;
+                   sessiontestRequest.send();
+
+
+                    //new NotificationProvider().showSuccess("Hooray", "you got it right");
                }
                else {
                  new NotificationProvider().showError("Boo", "you got it wrong");
