@@ -8,7 +8,7 @@ import { ArticleSummary } from "./article-summary";
     directives: [ NgFor, ArticleSummary ],
     providers: [ HTTP_PROVIDERS ],
     selector: "home-page",
-    template: `<article-summary *ngFor="#review of _reviews" [review]="review"></article-summary>`
+    template: `<article-summary *ngFor="let review of _reviews" [review]="review"></article-summary>`
 })
 export class HomePage {
     private _reviews: Array<any>;
