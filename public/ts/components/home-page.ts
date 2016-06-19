@@ -14,6 +14,8 @@ export class HomePage {
     private _reviews: Array<any>;
 
     public constructor(@Inject(Http) http: Http) {
+        // TODO: Use angular http when it supports withCredentials
+
         let request = new XMLHttpRequest();
         request.open("GET", "http://localhost:3000/reviews");
 
@@ -27,14 +29,5 @@ export class HomePage {
         }
 
         request.send();
-
-        /*
-      http
-         .get("http://localhost:3000/reviews")
-         .map(x => x.json())
-         .subscribe(reviews => {
-            this._reviews = reviews;
-         });
-         */
    }
 }
