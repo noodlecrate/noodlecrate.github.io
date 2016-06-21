@@ -34,35 +34,14 @@ export class LoginPage {
       request.onreadystatechange = function () {
            if(request.readyState === XMLHttpRequest.DONE) {
                if (request.status == 200 || request.status == 201) {
-
-                   let sessiontestRequest = new XMLHttpRequest();
-                   sessiontestRequest.open("GET", "http://localhost:3000/sessiontest");
-                   sessiontestRequest.withCredentials = true;
-                   sessiontestRequest.send();
-
-
-                    //new NotificationProvider().showSuccess("Hooray", "you got it right");
+                   new NotificationProvider().showSuccess("Hooray", "you got it right");
                }
                else {
-                 new NotificationProvider().showError("Boo", "you got it wrong");
-
+                   new NotificationProvider().showError("Boo", "you got it wrong");
                }
            };
        };
 
-      request.send(JSON.stringify({ username: this.username, password: this.password }))
-/*
-     let headers = new Headers();
-     headers.append('Content-Type', 'application/json');
-
-     this._http.post("http://localhost:3000/session",
-        JSON.stringify({ username: this.username, password: this.password }),
-      { headers: headers })
-     .subscribe(() => {
-       new NotificationProvider().showSuccess("Hooray", "you got it right");
-     },
-     () => {
-       new NotificationProvider().showError("Boo", "you got it wrong");
-    });*/
+      request.send(JSON.stringify({ username: this.username, password: this.password }));
    }
 }

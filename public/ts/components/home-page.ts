@@ -26,7 +26,7 @@ export class HomePage {
             if(request.readyState === XMLHttpRequest.DONE && request.status == 200) {
                 this._reviews = JSON.parse(request.responseText);
             }
-        }
+        }.bind(this);
 
         request.send();
    }
