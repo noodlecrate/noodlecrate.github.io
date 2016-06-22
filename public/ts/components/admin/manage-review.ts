@@ -23,13 +23,14 @@ export class ManageReviewPage {
    public constructor(@Inject(Http) http: Http, @Inject(RouteParams) routeParams: RouteParams) {
 
       this._http = http;
+      let me = this;
       if (routeParams.get("reviewId")) {
 
          http
             .get("http://pp050:3000/reviews/" + routeParams.get("reviewId"))
             .map(x => x.json())
             .subscribe(review => {
-               this._review = review;
+               me._review = review;
             });
       }
    }

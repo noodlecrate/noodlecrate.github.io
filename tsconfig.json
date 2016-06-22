@@ -23,7 +23,6 @@
         "./index.ts",
         "./dev-index.ts",
         "./public/ts/components/admin/manage-review.ts",
-        "./public/ts/components/admin/to-be-greater-than.spec.ts",
         "./public/ts/components/app.ts",
         "./public/ts/components/article-summary.ts",
         "./public/ts/components/home-page.ts",
