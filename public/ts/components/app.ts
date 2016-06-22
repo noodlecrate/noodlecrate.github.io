@@ -8,6 +8,7 @@ import { HomePage } from "./home-page";
 import { LoginPage } from "./login-page";
 import { NotFoundPage } from "./not-found-page";
 import { ViewReviewPage } from "./view-review-page";
+import { ManageReviewPage } from "./admin/manage-review";
 import { ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES } from "angular2/router";
 
 @Component({
@@ -22,7 +23,9 @@ import { ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES } from "angular2/route
     { path: "/", component: HomePage, name: "HomePage" },
     { path: "/login", component: LoginPage, name: "LoginPage" },
     { path: "/not-found", component: NotFoundPage, name: "NotFoundPage", useAsDefault: true },
-    { path: "/review/:reviewId", component: ViewReviewPage, name: "ViewReviewPage" }
+    { path: "/review/:reviewId", component: ViewReviewPage, name: "ViewReviewPage" },
+    { path: "/admin/edit-review/:reviewId", component: ManageReviewPage, name: "EditReviewPage" },
+    { path: "/admin/create-review", component: ManageReviewPage, name: "CreateReviewPage" }
 ])
 class SiteContainer {
 }

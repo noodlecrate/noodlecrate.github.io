@@ -17,7 +17,7 @@ export class HomePage {
         // TODO: Use angular http when it supports withCredentials
 
         let request = new XMLHttpRequest();
-        request.open("GET", "http://localhost:3000/reviews");
+        request.open("GET", "http://pp050:3000/reviews");
 
         request.setRequestHeader('Content-Type', 'application/json');
         request.withCredentials = true;

@@ -26,7 +26,7 @@ export class LoginPage {
    public signIn() {
 
       let request = new XMLHttpRequest();
-      request.open("POST", "http://localhost:3000/session");
+      request.open("POST", "http://pp050:3000/session");
 
       request.setRequestHeader('Content-Type', 'application/json');
       request.withCredentials = true;
