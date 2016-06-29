@@ -16,7 +16,7 @@ import { UserChip } from "./user-chip";
     directives: [ ROUTER_DIRECTIVES, UserChip ],
     selector: "noodle-crate-app",
     template: `<header>
-                  <h1 [routerLink]="['HomePage']">Noodle Crate</h1>
+                  <h1 [routerLink]="['HomePage']">NoodleCrate</h1>
                   <user-chip [user]=currentUser></user-chip>
                </header>
                <router-outlet></router-outlet>`
