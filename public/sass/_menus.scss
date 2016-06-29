@@ -11,4 +11,19 @@ header {
       margin: 0;
       cursor: pointer;
    }
+
+   user-chip {
+     top: 14px;
+     right: 64px;
+     position: absolute;
+
+     & > img {
+       width: 50px;
+       border-radius: 50%;
+     }
+     & > span {
+       position: relative;
+       top: -18px;
+     }
+   }
 }

@@ -10,12 +10,14 @@ import { NotFoundPage } from "./not-found-page";
 import { ViewReviewPage } from "./view-review-page";
 import { ManageReviewPage } from "./admin/manage-review";
 import { ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES } from "angular2/router";
+import { UserChip } from "./user-chip";
 
 @Component({
-    directives: [ ROUTER_DIRECTIVES ],
+    directives: [ ROUTER_DIRECTIVES, UserChip ],
     selector: "noodle-crate-app",
     template: `<header>
                   <h1 [routerLink]="['HomePage']">Noodle Crate</h1>
+                  <user-chip [user]=currentUser></user-chip>
                </header>
                <router-outlet></router-outlet>`
 })
@@ -28,5 +30,6 @@ import { ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES } from "angular2/route
     { path: "/admin/create-review", component: ManageReviewPage, name: "CreateReviewPage" }
 ])
 class SiteContainer {
+  currentUser = { firstName: "James", lastName: "Richford", imageUrl: "https://avatars2.githubusercontent.com/u/8244919?v=3&s=460" };
 }
 bootstrap(SiteContainer, [ ROUTER_PROVIDERS, provide(APP_BASE_HREF, {useValue: '/'}) ]);
