@@ -2,7 +2,7 @@ import { Component, Inject } from "angular2/core";
 import { NgFor } from "angular2/common";
 import { Http, HTTP_PROVIDERS, Headers } from "angular2/http";
 import "rxjs/Rx";
-import { RouteParams } from "angular2/router";
+import { RouteParams, Router } from "angular2/router";
 import { ButtonComponent, InputComponent, NotificationProvider } from "feel-ui/feel-ui";
 
 @Component({
@@ -19,10 +19,13 @@ import { ButtonComponent, InputComponent, NotificationProvider } from "feel-ui/f
 export class ManageReviewPage {
    private _review: any = {};
    private _http: Http;
+   private _router: Router;
 
-   public constructor(@Inject(Http) http: Http, @Inject(RouteParams) routeParams: RouteParams) {
+   public constructor(@Inject(Http) http: Http, @Inject(RouteParams) routeParams: RouteParams, @Inject(Router) router: Router) {
 
       this._http = http;
+      this._router = router;
+
       let me = this;
       if (routeParams.get("reviewId")) {
 
@@ -37,7 +40,7 @@ export class ManageReviewPage {
 
    public saveReview() {
 
-      this._review.author = { id: 2 };
+      this._review.authorId = 2;
 
       let request = new XMLHttpRequest();
 
@@ -51,11 +54,15 @@ export class ManageReviewPage {
       request.setRequestHeader("Content-Type", "application/json");
       request.withCredentials = true;
 
-      request.onreadystatechange = function () {
+      request.onreadystatechange = () => {
            if (request.readyState === XMLHttpRequest.DONE) {
                if (request.status === 200 || request.status === 201) {
                   this._review.id = JSON.parse(request.responseText).id;
                    new NotificationProvider().showSuccess("Hooray", "It's been saved");
+               }
+               else if (request.status === 401) {
+                  new NotificationProvider().showError("Not logged in", "no deal, bra");
+                  this._router.navigate(["Login"]);
                }
                else {
                    new NotificationProvider().showError("Boo", "Something went wrong");
