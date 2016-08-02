@@ -45,7 +45,7 @@ export class ManageReviewPage {
 
    public saveReview() {
 
-      this._review.authorId = 2;
+      this._review.authorId = this._currentUserProvider.getCurrentUser().id;
 
       let request = new XMLHttpRequest();
 
