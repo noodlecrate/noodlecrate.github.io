@@ -2,7 +2,7 @@ import { Component, Inject } from "angular2/core";
 import { NgFor } from "angular2/common";
 import { Http, HTTP_PROVIDERS, Headers } from "angular2/http";
 import { Router } from "angular2/router";
-import { InputComponent, ButtonComponent, NotificationProvider } from "feel-ui/feel-ui"
+import { InputComponent, ButtonComponent, NotificationProvider } from "feel-ui/feel-ui";
 import "rxjs/Rx";
 
 @Component({
@@ -31,12 +31,12 @@ export class LoginPage {
       let request = new XMLHttpRequest();
       request.open("POST", "http://pp050:3000/session");
 
-      request.setRequestHeader('Content-Type', 'application/json');
+      request.setRequestHeader("Content-Type", "application/json");
       request.withCredentials = true;
 
       request.onreadystatechange = () => {
-           if(request.readyState === XMLHttpRequest.DONE) {
-               if (request.status == 200 || request.status == 201) {
+           if (request.readyState === XMLHttpRequest.DONE) {
+               if (request.status === 200 || request.status === 201) {
                    new NotificationProvider().showSuccess("Hooray", "you got it right");
                    this._router.navigate(["CreateReviewPage"]);
                }
