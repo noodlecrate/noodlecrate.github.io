@@ -4,10 +4,11 @@ import { Http, HTTP_PROVIDERS, Headers } from "angular2/http";
 import "rxjs/Rx";
 import { RouteParams, Router } from "angular2/router";
 import { ButtonComponent, InputComponent, NotificationProvider } from "feel-ui/feel-ui";
+import { CurrentUserProvider } from "../../providers/current-user-provider";
 
 @Component({
     directives: [ NgFor, ButtonComponent, InputComponent ],
-    providers: [ HTTP_PROVIDERS ],
+    providers: [ HTTP_PROVIDERS, CurrentUserProvider ],
     selector: "view-review-page",
     template: `<article>
                   <feel-input [(value)]=_review.title [label]="'Title'"></feel-input>
@@ -21,10 +22,14 @@ export class ManageReviewPage {
    private _http: Http;
    private _router: Router;
 
-   public constructor(@Inject(Http) http: Http, @Inject(RouteParams) routeParams: RouteParams, @Inject(Router) router: Router) {
+   public constructor(@Inject(Http) http: Http, @Inject(RouteParams) routeParams: RouteParams, @Inject(Router) router: Router, @Inject(CurrentUserProvider) private _currentUserProvider: CurrentUserProvider) {
 
       this._http = http;
       this._router = router;
+
+      if (!this._currentUserProvider.getCurrentUser()) {
+         this._router.navigate(["LoginPage"]);
+      }
 
       let me = this;
       if (routeParams.get("reviewId")) {
@@ -62,7 +67,8 @@ export class ManageReviewPage {
                }
                else if (request.status === 401) {
                   new NotificationProvider().showError("Not logged in", "no deal, bra");
-                  this._router.navigate(["Login"]);
+                  this._currentUserProvider.cacheCurrentUser(null);
+                  this._router.navigate(["LoginPage"]);
                }
                else {
                    new NotificationProvider().showError("Boo", "Something went wrong");

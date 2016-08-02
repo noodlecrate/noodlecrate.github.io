@@ -3,11 +3,12 @@ import { NgFor } from "angular2/common";
 import { Http, HTTP_PROVIDERS, Headers } from "angular2/http";
 import { Router } from "angular2/router";
 import { InputComponent, ButtonComponent, NotificationProvider } from "feel-ui/feel-ui";
+import { CurrentUserProvider } from "../providers/current-user-provider";
 import "rxjs/Rx";
 
 @Component({
     directives: [ InputComponent, ButtonComponent ],
-    providers: [ HTTP_PROVIDERS ],
+    providers: [ HTTP_PROVIDERS, CurrentUserProvider ],
     selector: "login-page",
     template: `<form id="login-form">
                   <feel-input [(value)]=username [label]="'Username'"></feel-input>
@@ -21,9 +22,13 @@ export class LoginPage {
    private _http: Http;
    private _router: Router;
 
-   public constructor(@Inject(Http) http: Http, @Inject(Router) router: Router)  {
+   public constructor(@Inject(Http) http: Http, @Inject(Router) router: Router, @Inject(CurrentUserProvider) private _currentUserProvider: CurrentUserProvider)  {
      this._http = http;
      this._router = router;
+
+     if (this._currentUserProvider.getCurrentUser()) {
+        this._router.navigate(["CreateReviewPage"]);
+     }
    }
 
    public signIn() {
@@ -38,7 +43,21 @@ export class LoginPage {
            if (request.readyState === XMLHttpRequest.DONE) {
                if (request.status === 200 || request.status === 201) {
                    new NotificationProvider().showSuccess("Hooray", "you got it right");
-                   this._router.navigate(["CreateReviewPage"]);
+                   request.open("GET", "http://pp050:3000/users/current");
+
+                  request.setRequestHeader("Content-Type", "application/json");
+                  request.withCredentials = true;
+
+                  request.onreadystatechange = () => {
+                       if (request.readyState === XMLHttpRequest.DONE) {
+                          if (request.status === 200) {
+                              this._currentUserProvider.cacheCurrentUser(JSON.parse(request.responseText));
+                              this._router.navigate(["CreateReviewPage"]);
+                          }
+                       }
+                   };
+
+                   request.send();
                }
                else {
                    new NotificationProvider().showError("Boo", "you got it wrong");

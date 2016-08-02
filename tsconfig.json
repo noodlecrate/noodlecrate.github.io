@@ -30,6 +30,7 @@
         "./public/ts/components/not-found-page.ts",
         "./public/ts/components/user-chip.ts",
         "./public/ts/components/view-review-page.ts",
+        "./public/ts/providers/current-user-provider.ts",
         "./typings/main.d.ts"
     ],
     "atom": {
