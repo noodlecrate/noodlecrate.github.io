@@ -34,8 +34,6 @@ export class LoginPage {
       request.setRequestHeader('Content-Type', 'application/json');
       request.withCredentials = true;
 
-      let router = this._router;
-
       request.onreadystatechange = () => {
            if(request.readyState === XMLHttpRequest.DONE) {
                if (request.status == 200 || request.status == 201) {
