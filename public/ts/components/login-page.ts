@@ -1,6 +1,7 @@
 import { Component, Inject } from "angular2/core";
 import { NgFor } from "angular2/common";
 import { Http, HTTP_PROVIDERS, Headers } from "angular2/http";
+import { Router } from "angular2/router";
 import { InputComponent, ButtonComponent, NotificationProvider } from "feel-ui/feel-ui"
 import "rxjs/Rx";
 
@@ -18,9 +19,11 @@ export class LoginPage {
    public username: string;
    public password: string;
    private _http: Http;
+   private _router: Router;
 
-   public constructor(@Inject(Http) http: Http) {
+   public constructor(@Inject(Http) http: Http, @Inject(Router) router: Router)  {
      this._http = http;
+     this._router = router;
    }
 
    public signIn() {
@@ -31,10 +34,13 @@ export class LoginPage {
       request.setRequestHeader('Content-Type', 'application/json');
       request.withCredentials = true;
 
-      request.onreadystatechange = function () {
+      let router = this._router;
+
+      request.onreadystatechange = () => {
            if(request.readyState === XMLHttpRequest.DONE) {
                if (request.status == 200 || request.status == 201) {
                    new NotificationProvider().showSuccess("Hooray", "you got it right");
+                   this._router.navigate(["CreateReviewPage"]);
                }
                else {
                    new NotificationProvider().showError("Boo", "you got it wrong");
