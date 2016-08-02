@@ -48,12 +48,12 @@ export class ManageReviewPage {
          request.open("POST", "http://pp050:3000/reviews");
       }
 
-      request.setRequestHeader('Content-Type', 'application/json');
+      request.setRequestHeader("Content-Type", "application/json");
       request.withCredentials = true;
 
       request.onreadystatechange = function () {
            if (request.readyState === XMLHttpRequest.DONE) {
-               if (request.status == 200 || request.status == 201) {
+               if (request.status === 200 || request.status === 201) {
                   this._review.id = JSON.parse(request.responseText).id;
                    new NotificationProvider().showSuccess("Hooray", "It's been saved");
                }
