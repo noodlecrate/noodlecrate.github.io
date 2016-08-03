@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es6",
         "module": "commonjs",
         "noImplicitAny": true,
         "sourceMap": true,
@@ -30,7 +30,9 @@
         "./public/ts/components/not-found-page.ts",
         "./public/ts/components/user-chip.ts",
         "./public/ts/components/view-review-page.ts",
+        "./public/ts/models/review-model.ts",
         "./public/ts/providers/current-user-provider.ts",
+        "./public/ts/respositories/review-repository.ts",
         "./typings/main.d.ts"
     ],
     "atom": {

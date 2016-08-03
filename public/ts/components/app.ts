@@ -33,7 +33,7 @@ import { CurrentUserProvider } from "../providers/current-user-provider";
 ])
 class SiteContainer {
 
-   private _currentUser: any;
+  private _currentUser: any;
 
   public constructor(@Inject(CurrentUserProvider) private _currentUserProvider: CurrentUserProvider) {
      let request = new XMLHttpRequest();
