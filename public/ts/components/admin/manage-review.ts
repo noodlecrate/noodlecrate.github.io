@@ -5,10 +5,11 @@ import "rxjs/Rx";
 import { RouteParams, Router } from "angular2/router";
 import { ButtonComponent, InputComponent, NotificationProvider } from "feel-ui/feel-ui";
 import { CurrentUserProvider } from "../../providers/current-user-provider";
+import { ReviewRepository } from "../../respositories/review-repository";
 
 @Component({
     directives: [ NgFor, ButtonComponent, InputComponent ],
-    providers: [ HTTP_PROVIDERS, CurrentUserProvider ],
+    providers: [ HTTP_PROVIDERS, CurrentUserProvider, ReviewRepository ],
     selector: "view-review-page",
     template: `<article>
                   <feel-input [(value)]=_review.title [label]="'Title'"></feel-input>
@@ -19,13 +20,8 @@ import { CurrentUserProvider } from "../../providers/current-user-provider";
 })
 export class ManageReviewPage {
    private _review: any = {};
-   private _http: Http;
-   private _router: Router;
 
-   public constructor(@Inject(Http) http: Http, @Inject(RouteParams) routeParams: RouteParams, @Inject(Router) router: Router, @Inject(CurrentUserProvider) private _currentUserProvider: CurrentUserProvider) {
-
-      this._http = http;
-      this._router = router;
+   public constructor( routeParams: RouteParams, private _router: Router, private _currentUserProvider: CurrentUserProvider, private _reviewRepository: ReviewRepository) {
 
       if (!this._currentUserProvider.getCurrentUser()) {
          this._router.navigate(["LoginPage"]);
@@ -33,14 +29,12 @@ export class ManageReviewPage {
 
       let me = this;
       if (routeParams.get("reviewId")) {
-
-         http
-            .get("http://pp050:3000/reviews/" + routeParams.get("reviewId"))
-            .map(x => x.json())
-            .subscribe(review => {
-               me._review = review;
-            });
+         this._getReview(parseInt(routeParams.get("reviewId")));
       }
+   }
+
+   private async _getReview(reviewId: number) {
+      this._review = await this._reviewRepository.getReviewById(reviewId);
    }
 
    public saveReview() {
