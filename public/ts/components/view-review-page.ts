@@ -10,19 +10,21 @@ import { RouteParams } from "angular2/router";
     providers: [ HTTP_PROVIDERS ],
     selector: "view-review-page",
     template: `<article>
-                  <h2>{{review.title}}</h2>
-                  <div>{{review.body}}</div>
+                  <img src="{{_review.imageUrl}}" />
+                  <h2>{{_review.title}}</h2>
+                  <div>{{_review | json}}</div>
+                  <div>{{_review.body}}</div>
                </article>`
 })
 export class ViewReviewPage {
-   private review: Object = {};
+   private _review: Object = {};
 
    public constructor(@Inject(Http) http: Http, @Inject(RouteParams) routeParams: RouteParams) {
       http
-         .get("http://localhost:3000/reviews/" + routeParams.get("reviewId"))
+         .get("http://PP050:3000/reviews/" + routeParams.get("reviewId"))
          .map(x => x.json())
          .subscribe(review => {
-            this.review = review;
+            this._review = review;
          });
    }
 }
