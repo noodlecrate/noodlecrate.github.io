@@ -15,7 +15,7 @@ import { CurrentUserProvider } from "../providers/current-user-provider";
 
 @Component({
     directives: [ ROUTER_DIRECTIVES, UserChip, NgIf ],
-    providers: [ CurrentUserProvider ],
+    providers: [ CurrentUserProvider, HTTP_PROVIDERS ],
     selector: "noodle-crate-app",
     template: `<header>
                   <h1 [routerLink]="['HomePage']">NoodleCrate</h1>
@@ -35,7 +35,7 @@ class SiteContainer {
 
   private _currentUser: any;
 
-  public constructor(@Inject(CurrentUserProvider) private _currentUserProvider: CurrentUserProvider) {
+  public constructor(private _currentUserProvider: CurrentUserProvider) {
      let request = new XMLHttpRequest();
 
      request.open("GET", "http://pp050:3000/users/current");
