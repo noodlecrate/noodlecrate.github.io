@@ -1,4 +1,4 @@
-import { Component, Inject } from "angular2/core";
+import { Component } from "angular2/core";
 import { NgFor } from "angular2/common";
 import { ArticleSummary } from "./article-summary";
 import { HTTP_PROVIDERS } from "angular2/http";
