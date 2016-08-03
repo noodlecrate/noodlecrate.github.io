@@ -1,8 +1,8 @@
-import { Component, Inject } from "angular2/core";
-import { NgFor } from "angular2/common";
-import { Http, HTTP_PROVIDERS, Headers } from "angular2/http";
+import { Component, Inject } from "@angular/core";
+import { NgFor } from "@angular/common";
+import { Http, HTTP_PROVIDERS, Headers } from "@angular/http";
 import "rxjs/Rx";
-import { RouteParams, Router } from "angular2/router";
+import { RouteParams, Router } from "@angular/router";
 import { ButtonComponent, InputComponent, NotificationProvider } from "feel-ui/feel-ui";
 import { CurrentUserProvider } from "../../providers/current-user-provider";
 import { ReviewRepository } from "../../respositories/review-repository";

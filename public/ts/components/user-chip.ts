@@ -1,5 +1,5 @@
-import { Component, Input } from "angular2/core";
-import { HTTP_PROVIDERS } from "angular2/http";
+import { Component, Input } from "@angular/core";
+import { HTTP_PROVIDERS } from "@angular/http";
 import { CurrentUserProvider } from "../providers/current-user-provider";
 
 @Component({

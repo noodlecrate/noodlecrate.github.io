@@ -1,8 +1,6 @@
-import { Component, Input } from "angular2/core";
-import { RouteParams, ROUTER_DIRECTIVES } from "angular2/router";
+import { Component, Input } from "@angular/core";
 
 @Component({
-   directives: [ ROUTER_DIRECTIVES ],
    selector: "article-summary",
    template: `
             <section class="image">

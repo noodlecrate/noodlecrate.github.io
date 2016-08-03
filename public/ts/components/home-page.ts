@@ -1,6 +1,6 @@
-import { Component } from "angular2/core";
-import { NgFor } from "angular2/common";
-import { Http, HTTP_PROVIDERS } from "angular2/http";
+import { Component } from "@angular/core";
+import { NgFor } from "@angular/common";
+import { Http, HTTP_PROVIDERS } from "@angular/http";
 import { ArticleSummary } from "./article-summary";
 import { ReviewRepository } from "../respositories/review-repository";
 import "rxjs/Rx";

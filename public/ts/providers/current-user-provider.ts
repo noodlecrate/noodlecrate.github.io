@@ -1,5 +1,5 @@
-import { Injectable } from "angular2/core";
-import { Http } from "angular2/http";
+import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
 import "rxjs/Rx";
 
 @Injectable()
@@ -18,7 +18,7 @@ export class CurrentUserProvider {
    public async logout(): Promise<void> {
       return new Promise<void>((resolve, reject) => {
          this._http
-            .delete("http://PP050:3000/logout")
+            .delete("http://PP050:3000/logout", {})
             .subscribe(() => {
                this.cacheCurrentUser(null);
                resolve();

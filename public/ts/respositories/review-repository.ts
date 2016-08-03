@@ -1,6 +1,6 @@
-import { Injectable, Inject } from "angular2/core";
+import { Injectable, Inject } from "@angular/core";
 import { ReviewModel } from "../models/review-model";
-import { Http, HTTP_PROVIDERS } from "angular2/http";
+import { Http, HTTP_PROVIDERS } from "@angular/http";
 import "rxjs/Rx";
 
 @Injectable()

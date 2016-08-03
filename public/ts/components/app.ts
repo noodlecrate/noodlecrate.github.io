@@ -1,15 +1,15 @@
-import { Component, Inject, provide } from "angular2/core";
-import { APP_BASE_HREF } from "angular2/platform/common";
-import { NgIf } from "angular2/common";
-import { bootstrap } from "angular2/platform/browser";
-import { Http, HTTP_PROVIDERS } from "angular2/http";
+import { Component, Inject, provide } from "@angular/core";
+import { APP_BASE_HREF } from "@angular/platform/common";
+import { NgIf } from "@angular/common";
+import { bootstrap } from "@angular/platform/browser";
+import { Http, HTTP_PROVIDERS } from "@angular/http";
 import "rxjs/Rx";
 import { HomePage } from "./home-page";
 import { LoginPage } from "./login-page";
 import { NotFoundPage } from "./not-found-page";
 import { ViewReviewPage } from "./view-review-page";
 import { ManageReviewPage } from "./admin/manage-review";
-import { ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES } from "angular2/router";
+import { ROUTER_PROVIDERS, Routes, ROUTER_DIRECTIVES } from "@angular/router";
 import { UserChip } from "./user-chip";
 import { CurrentUserProvider } from "../providers/current-user-provider";
 
@@ -23,7 +23,7 @@ import { CurrentUserProvider } from "../providers/current-user-provider";
                </header>
                <router-outlet></router-outlet>`
 })
-@RouteConfig([
+@Routes([
     { path: "/", component: HomePage, name: "HomePage" },
     { path: "/login", component: LoginPage, name: "LoginPage" },
     { path: "/not-found", component: NotFoundPage, name: "NotFoundPage", useAsDefault: true },

@@ -1,13 +1,13 @@
-import { Component } from "angular2/core";
-import { NgFor } from "angular2/common";
+import { Component } from "@angular/core";
+import { NgFor } from "@angular/common";
 import { ArticleSummary } from "./article-summary";
-import { HTTP_PROVIDERS } from "angular2/http";
-import { RouteParams, ROUTER_PROVIDERS } from "angular2/router";
+import { HTTP_PROVIDERS } from "@angular/http";
+import { RouteSegment, ROUTER_DIRECTIVES } from "@angular/router";
 import { ReviewRepository } from "../respositories/review-repository";
 
 @Component({
-    directives: [ NgFor, ArticleSummary ],
-    providers: [ ROUTER_PROVIDERS, ReviewRepository, HTTP_PROVIDERS ],
+    directives: [ NgFor, ArticleSummary, ROUTER_DIRECTIVES ],
+    providers: [ ReviewRepository, HTTP_PROVIDERS ],
     selector: "view-review-page",
     template: `<article>
                   <img src="{{_review.imageUrl}}" />
