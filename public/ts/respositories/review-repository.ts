@@ -8,7 +8,7 @@ export class ReviewRepository {
 
    public constructor(private _http: Http) { }
 
-   public async getById(reviewId: number): Promise<ReviewModel> {
+   public async getReviewById(reviewId: number): Promise<ReviewModel> {
       return new Promise<ReviewModel>((resolve, reject) => {
          this._http
             .get("http://PP050:3000/reviews/" + reviewId)
@@ -17,5 +17,17 @@ export class ReviewRepository {
                resolve(review);
             });
       });
+   }
+
+   public async getReviews(): Promise<Array<ReviewModel>> {
+      return new Promise<Array<ReviewModel>>((resolve, reject) => {
+         this._http
+            .get("http://PP050:3000/reviews")
+            .map(response => response.json())
+            .subscribe(reviews => {
+               resolve(reviews);
+            });
+      });
+
    }
 }

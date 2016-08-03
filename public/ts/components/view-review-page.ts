@@ -23,6 +23,6 @@ export class ViewReviewPage {
    }
 
    private async _getReview(reviewId: number) {
-      this._review = await this._reviewRepository.getById(reviewId);
+      this._review = await this._reviewRepository.getReviewById(reviewId);
    }
 }
