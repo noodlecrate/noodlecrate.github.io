@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { NgFor } from "@angular/common";
 import { ArticleSummary } from "./article-summary";
 import { HTTP_PROVIDERS } from "@angular/http";
-import { RouteSegment, ROUTER_DIRECTIVES } from "@angular/router";
+import { ActivatedRoute, ROUTER_DIRECTIVES } from "@angular/router";
 import { ReviewRepository } from "../respositories/review-repository";
 
 @Component({
@@ -18,8 +18,8 @@ import { ReviewRepository } from "../respositories/review-repository";
 export class ViewReviewPage {
    private _review: Object = {};
 
-   public constructor(routeParams: RouteParams, private _reviewRepository: ReviewRepository) {
-      this._getReview(parseInt(routeParams.get("reviewId")));
+   public constructor(route: ActivatedRoute, private _reviewRepository: ReviewRepository) {
+      this._getReview(parseInt( (<any>route.params).reviewId ));
    }
 
    private async _getReview(reviewId: number) {

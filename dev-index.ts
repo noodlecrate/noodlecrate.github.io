@@ -1,3 +1,5 @@
+"use strict";
+
 let liveServer = require("live-server");
 
 let params = {

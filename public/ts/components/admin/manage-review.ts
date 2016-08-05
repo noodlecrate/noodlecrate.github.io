@@ -2,7 +2,7 @@ import { Component, Inject } from "@angular/core";
 import { NgFor } from "@angular/common";
 import { Http, HTTP_PROVIDERS, Headers } from "@angular/http";
 import "rxjs/Rx";
-import { RouteParams, Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ButtonComponent, InputComponent, NotificationProvider } from "feel-ui/feel-ui";
 import { CurrentUserProvider } from "../../providers/current-user-provider";
 import { ReviewRepository } from "../../respositories/review-repository";
@@ -21,15 +21,15 @@ import { ReviewRepository } from "../../respositories/review-repository";
 export class ManageReviewPage {
    private _review: any = {};
 
-   public constructor( routeParams: RouteParams, private _router: Router, private _currentUserProvider: CurrentUserProvider, private _reviewRepository: ReviewRepository) {
+   public constructor( route: ActivatedRoute, private _router: Router, private _currentUserProvider: CurrentUserProvider, private _reviewRepository: ReviewRepository) {
 
       if (!this._currentUserProvider.getCurrentUser()) {
          this._router.navigate(["LoginPage"]);
       }
 
       let me = this;
-      if (routeParams.get("reviewId")) {
-         this._getReview(parseInt(routeParams.get("reviewId")));
+      if ( (<any>route.params).reviewId ) {
+         this._getReview(parseInt( (<any>route.params).reviewId ));
       }
    }
 
