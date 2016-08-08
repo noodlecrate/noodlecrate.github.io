@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { NgFor } from "@angular/common";
 import { Http, HTTP_PROVIDERS } from "@angular/http";
 import { ArticleSummary } from "./article-summary";
@@ -13,8 +13,11 @@ import "rxjs/Rx";
 })
 export class HomePage {
     private _reviews: Array<any>;
+    private _reviewRepository: ReviewRepository;
 
-    public constructor(private _reviewRepository: ReviewRepository) {
+    public constructor(@Inject(ReviewRepository) reviewRepository: ReviewRepository) {
+        this._reviewRepository = reviewRepository;
+
       this._getReviews();
    }
 

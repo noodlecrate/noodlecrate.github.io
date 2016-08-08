@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Inject } from "@angular/core";
 import { HTTP_PROVIDERS } from "@angular/http";
 import { CurrentUserProvider } from "../providers/current-user-provider";
 
@@ -12,7 +12,11 @@ import { CurrentUserProvider } from "../providers/current-user-provider";
 })
 export class UserChip {
 
-   public constructor (private _currentUserProvider: CurrentUserProvider) {}
+    private _currentUserProvider: CurrentUserProvider;
+
+   public constructor (@Inject(CurrentUserProvider) currentUserProvider: CurrentUserProvider) {
+       this._currentUserProvider = currentUserProvider;
+   }
 
    @Input("user")
    private _user: any;

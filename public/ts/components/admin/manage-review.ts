@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ButtonComponent, InputComponent, NotificationProvider } from "feel-ui/feel-ui";
 import { CurrentUserProvider } from "../../providers/current-user-provider";
 import { ReviewRepository } from "../../respositories/review-repository";
+import * as Constants from "../../constants";
 
 @Component({
     directives: [ NgFor, ButtonComponent, InputComponent ],
@@ -44,10 +45,10 @@ export class ManageReviewPage {
       let request = new XMLHttpRequest();
 
       if (this._review.id) {
-         request.open("PUT", "http://pp050:3000/reviews/" + this._review.id);
+         request.open("PUT", Constants.API_URL + "/reviews/" + this._review.id);
       }
       else {
-         request.open("POST", "http://pp050:3000/reviews");
+         request.open("POST", Constants.API_URL + "/reviews");
       }
 
       request.setRequestHeader("Content-Type", "application/json");

@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { InputComponent, ButtonComponent, NotificationProvider } from "feel-ui/feel-ui";
 import { CurrentUserProvider } from "../providers/current-user-provider";
 import "rxjs/Rx";
+import * as Constants from "../constants";
 
 @Component({
     directives: [ InputComponent, ButtonComponent ],
@@ -34,7 +35,7 @@ export class LoginPage {
    public signIn() {
 
       let request = new XMLHttpRequest();
-      request.open("POST", "http://pp050:3000/session");
+      request.open("POST", Constants.API_URL + "/session");
 
       request.setRequestHeader("Content-Type", "application/json");
       request.withCredentials = true;
@@ -43,7 +44,7 @@ export class LoginPage {
            if (request.readyState === XMLHttpRequest.DONE) {
                if (request.status === 200 || request.status === 201) {
                    new NotificationProvider().showSuccess("Hooray", "you got it right");
-                   request.open("GET", "http://pp050:3000/users/current");
+                   request.open("GET", Constants.API_URL + "/users/current");
 
                   request.setRequestHeader("Content-Type", "application/json");
                   request.withCredentials = true;

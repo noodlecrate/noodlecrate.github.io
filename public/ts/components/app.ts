@@ -11,6 +11,7 @@ import { ManageReviewPage } from "./admin/manage-review";
 import { provideRouter, RouterConfig, ROUTER_DIRECTIVES } from "@angular/router";
 import { UserChip } from "./user-chip";
 import { CurrentUserProvider } from "../providers/current-user-provider";
+import * as Constants from "../constants";
 
 const routes: RouterConfig = [
     { path: "", component: HomePage },
@@ -22,27 +23,26 @@ const routes: RouterConfig = [
 ];
 
 @Component({
-    directives: [ ROUTER_DIRECTIVES, /*UserChip,*/ NgIf ],
-    providers: [ /*CurrentUserProvider,*/ HTTP_PROVIDERS ],
+    directives: [ ROUTER_DIRECTIVES, UserChip, NgIf ],
+    providers: [ CurrentUserProvider, HTTP_PROVIDERS ],
     selector: "noodle-crate-app",
-    template: /*`<header>
+    template: `<header>
                   <h1 [routerLink]="['HomePage']">NoodleCrate</h1>
                   <user-chip *ngIf=_currentUser [user]=_currentUser></user-chip>
                </header>
-               <router-outlet></router-outlet>`*/
-               `<header>
-                             <h1 [routerLink]="['HomePage']">NoodleCrate</h1>
-                          </header>
-                          <router-outlet></router-outlet>`
+               <router-outlet></router-outlet>`
 })
 class SiteContainer {
 
   private _currentUser: any;
+  private _currentUserProvider: CurrentUserProvider;
 
-  public constructor(/*private _currentUserProvider: CurrentUserProvider*/) {
-     /*let request = new XMLHttpRequest();
+  public constructor(@Inject(CurrentUserProvider) currentUserProvider: CurrentUserProvider) {
+      this._currentUserProvider = currentUserProvider;
 
-     request.open("GET", "http://pp050:3000/users/current");
+     let request = new XMLHttpRequest();
+
+     request.open("GET", Constants.API_URL + "/users/current");
 
      request.setRequestHeader("Content-Type", "application/json");
      request.withCredentials = true;
@@ -56,7 +56,7 @@ class SiteContainer {
           }
       };
 
-      request.send();*/
+      request.send();
   }
 }
 bootstrap(SiteContainer, [ provideRouter(routes) ]).catch(err => console.error(err));

@@ -1,11 +1,16 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { Http } from "@angular/http";
 import "rxjs/Rx";
+import * as Constants from "../constants";
 
 @Injectable()
 export class CurrentUserProvider {
 
-   public constructor(private _http: Http) { }
+    private _http: Http;
+
+   public constructor(@Inject(Http) http: Http) {
+       this._http = http;
+   }
 
    public getCurrentUser(): any {
       return JSON.parse(localStorage.getItem("current user"));
@@ -18,7 +23,7 @@ export class CurrentUserProvider {
    public async logout(): Promise<void> {
       return new Promise<void>((resolve, reject) => {
          this._http
-            .delete("http://PP050:3000/logout", {})
+            .delete(Constants.API_URL + "/logout", {})
             .subscribe(() => {
                this.cacheCurrentUser(null);
                resolve();
